@@ -1,0 +1,45 @@
+ 
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-5 mb-5">Edit</h1>
+    </div>
+    
+    <div class="row justify-content-center">
+      
+      <%= form_with model: @user, local:true do |f| %>
+      
+        <div class="form-group">
+          <label class="form-label">名前</label>
+          <%= f.text_field :name, autofocus: true, placeholder:"名前", class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">ニックネーム</label>
+          <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム", class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">自己紹介</label>
+          <%= f.text_field :introduction, autofocus: true, placeholder:"自己紹介", class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">電話番号</label>
+          <%= f.text_field :phone_number, autofocus: true, placeholder:"電話番号", class: "form-control" %>
+        </div>
+      
+        <div class="form-group">
+          <label class="form-label">ヘッダー画像</label><br>
+          <%= image_tag @user.get_header_image(100, 100) %><br>
+          <%= f.file_field :header_image, placeholder: "ヘッダー画像" %>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">アイコン画像</label><br>
+          <%= image_tag @user.get_icon_image(100, 100) %><br>
+          <%= f.file_field :icon_image, placeholder: "アイコン画像" %>
+        </div>
+      
+      <%= f.submit '保存する', class: "btn btn-success" %>
+      <%= link_to "退会する", unsubscribe_user_path, class:"glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
+      <% end %>
+    </div>

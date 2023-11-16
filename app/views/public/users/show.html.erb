@@ -1,0 +1,77 @@
+
+    <div class="row justify-content-center">
+      <% if user_signed_in? && @user == current_user %>
+      <h1 class="font-weight-normal mt-5 mb-5">マイページ</h1>
+      <% else %>
+      <h1 class="font-weight-normal mt-5 mb-5"><%= @user.name %>さんのページ</h1>
+      <% end %>
+    </div>
+    
+  　   <p>フォロー<%= @user.followers.count %></p>
+      <p>フォロワー<%= @user.followeds.count %></p>
+    <% unless user_signed_in? && @user == current_user %>
+      <p><%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %></p>
+    <% end %>
+
+
+    <% if user_signed_in? && @user == current_user %>
+      <p class="d-flex justify-content-end">
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-success" %>
+      </p>
+    <% end %>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Header Image</th>
+          <th>Icon Image</th>
+          <th>Introduction</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td>
+            <%= image_tag @user.get_header_image(600, 600) %><br>
+          </td>
+          <td>
+            <%= image_tag @user.get_icon_image(100, 100) %><br>
+          </td>
+          <td>
+            <%= @user.introduction %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Body</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.get_post_image(100, 100) %>
+            <% end %>
+          </td>
+          <td>
+            <%= post.body %>
+          </td>
+          <td>
+            <%= "#{post.comments.count} コメント" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    
+    <%= paginate @posts %>  
+
+

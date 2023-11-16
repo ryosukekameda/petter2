@@ -1,0 +1,101 @@
+<header class="sticky-top">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <div class="container">
+        <div class="row-100">
+          <div class="col-4">
+            <a href="https://dd395bbb0a2244cf9630f0e758761021.vfs.cloud9.ap-southeast-2.amazonaws.com/" class="navbar-brand">
+              <div="border p-2">
+                PETTER
+              </div>
+            </a>
+          </div>
+    <div class="col-8 text-right">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+      <ul class="navbar-nav ml-auto">
+        
+        <% if user_signed_in? %>
+        
+          <li class="nav-item" style="margin-right:40px;">
+            <% flash.each do |key, message| %>
+              <div class="flash <%= key %>"><%= message %></div>
+            <% end %>
+          </li>
+        
+          <li class="nav-item" style="margin-right:40px;">
+            ようこそ、<%= current_user.name %>さん!
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to root_path, style: "color:black;" do %>
+              <i class="fas fa-home" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <% if @user.present? %>
+              <%= link_to user_path(@user.id), style: "color:black;" do %>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to new_post_path, style: "color:black;" do %>
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to favorites_user_path(current_user), style: "color:black;" do %>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to about_path, style: "color:black;" do %>
+              <i class="fa-solid fa-link" aria-hidden="true"></i>
+            <% end %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to destroy_user_session_path, method: :delete, style: "color:black;" do %>
+              <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+            <%= render "layouts/search" %>
+          
+        <% else %>
+        
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "トップページ", root_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "新規登録", new_user_registration_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "ログイン", new_user_session_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "About", about_path, style: "color:black;" %>
+            </li>
+            
+        <% end %>
+
+        </ul>
+      </div>
+      </div>
+      </div>
+    </div>
+  </nav>
+</header>

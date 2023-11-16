@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Image</td>
+      <td>Body</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorite_posts.each do |post| %>
+      <tr>
+        <td><%= link_to image_tag(post.get_post_image(150, 150)), post_path(post) %></td>
+        <td><%= post.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

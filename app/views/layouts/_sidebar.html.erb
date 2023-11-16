@@ -1,0 +1,16 @@
+<div class="listings">
+  <div class="listings_channels">
+    <h2 class="listings_header">admin</h2>
+    <ul class="channel_list">
+      <% if admin_signed_in? %>
+        <%= sidebar_link_item "トップ", admin_path %>
+        <% if current_user %>
+          <%= sidebar_link_item "エディット", edit_admin_user_path(current_user) %>
+        <% end %>
+        <%= sidebar_link_item "ログアウト", destroy_admin_session_path, method: :delete %>
+      <% else %>
+        <%= sidebar_link_item "ログイン", new_admin_session_path %>
+      <% end %>
+    </ul>
+  </div>
+</div>

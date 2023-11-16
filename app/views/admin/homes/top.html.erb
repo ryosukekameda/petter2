@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>ユーザー一覧</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Nickname</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+        <td class="<%= user.is_deleted ? 'text-gray' : 'text-green' %>"><%= user.is_deleted ? '退会ずみ' : '有効' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

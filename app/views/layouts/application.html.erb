@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Petter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/83484975db.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+   <% if user_signed_in? %>
+    
+      <body id="wrapper" style="background-color: white;">
+        <div id="header">
+          <%= render "layouts/header" %>
+        </div>
+        
+        <div class="row">
+          <div class="col-2">
+            <%= render "layouts/sidebar" %>
+          </div>
+        </div>
+        
+        <div class="container">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% elsif admin_signed_in? %>
+    
+      <body id="wrapper" style="background-color: #EEEEEE;">
+        <div id="header">
+          <%= render "layouts/header" %>
+        </div>
+        
+        <div class="row">
+          <div class="col-2">
+            <%= render "layouts/sidebar" %>
+          </div>
+        </div>
+          
+        <div class="container">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% else %>
+    
+      <body id="wrapper" style="background=color: white;">
+        <div id="header">
+          <%= render "layouts/header" %>
+        </div>
+        
+        <div class="row">
+          <div class="col-2">
+            <%= render "layouts/sidebar" %>
+          </div>
+        </div>
+        
+        <div class="container">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% end %>
+
+</html>

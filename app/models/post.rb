@@ -12,23 +12,31 @@ class Post < ApplicationRecord
   validates :post_image, presence: true
   
   def save_tags(tag_ids)
+    current_tags = self.tags.pluck(:id)
+    new_tags = tag_ids.map(&:to_i)
+    
+    self.tags << Tag.where(id: new_tags - current_tags)
+    self.tags = self.tags.reject { |tag| !new_tags.include?(tag.id) }
+  end
+  
+  # def save_tags(tag_ids)
   # タグIDがnilの場合（チェックボックスが選択されなかった場合）、
   # 関連付けられているタグを全て削除します。
-    return tags.clear if tag_ids.nil?
+    # return tags.clear if tag_ids.nil?
 
-    current_tags = tags.pluck(:id)
-    new_tags = tag_ids.map(&:to_i) - current_tags
-    old_tags = current_tags - tag_ids.map(&:to_i)
+    # current_tags = tags.pluck(:id)
+    # new_tags = tag_ids.map(&:to_i) - current_tags
+    # old_tags = current_tags - tag_ids.map(&:to_i)
 
-    old_tags.each do |old_tag_id|
-      tags.delete(Tag.find(old_tag_id))
-    end
+    # old_tags.each do |old_tag_id|
+      # tags.delete(Tag.find(old_tag_id))
+    # end
 
-    new_tags.each do |new_tag_id|
-      tag = Tag.find(new_tag_id)
-      tags << tag unless tags.include?(tag)
-    end
-  end
+    # new_tags.each do |new_tag_id|
+      # tag = Tag.find(new_tag_id)
+      # tags << tag unless tags.include?(tag)
+    # end
+  # end
 
 
 

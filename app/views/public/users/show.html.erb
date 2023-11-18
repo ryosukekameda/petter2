@@ -2,13 +2,21 @@
     <div class="row justify-content-center">
       <% if user_signed_in? && @user == current_user %>
       <h1 class="font-weight-normal mt-5 mb-5">マイページ</h1>
+      <p><%= @user.posts.count %> Posts</p>
       <% else %>
       <h1 class="font-weight-normal mt-5 mb-5"><%= @user.name %>さんのページ</h1>
       <% end %>
     </div>
     
-  　   <p>フォロー<%= @user.followers.count %></p>
-      <p>フォロワー<%= @user.followeds.count %></p>
+    <div class="header-image">
+      <%= image_tag @user.get_header_image(600, 100) %><br>
+    </div>
+    
+    <div>
+  　   <span><%= @user.followers.count %> Following</span>
+      <span><%= @user.followeds.count %> Followers</span>
+    </div>
+      
     <% unless user_signed_in? && @user == current_user %>
       <p><%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %></p>
     <% end %>
@@ -16,14 +24,13 @@
 
     <% if user_signed_in? && @user == current_user %>
       <p class="d-flex justify-content-end">
-        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-success" %>
+        <%= link_to "Edit plofile", edit_user_path(@user), class: "btn btn-success", style: "width: 120px;" %>
       </p>
     <% end %>
     
     <table class="table">
       <thead>
         <tr>
-          <th>Header Image</th>
           <th>Icon Image</th>
           <th>Introduction</th>
         </tr>
@@ -32,10 +39,7 @@
       <tbody>
         <tr>
           <td>
-            <%= image_tag @user.get_header_image(600, 600) %><br>
-          </td>
-          <td>
-            <%= image_tag @user.get_icon_image(100, 100) %><br>
+            <%= image_tag @user.get_icon_image(200, 200) %><br>
           </td>
           <td>
             <%= @user.introduction %>

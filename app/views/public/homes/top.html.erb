@@ -12,13 +12,18 @@
   
   <% if @tag_list.present? %>
   <tbody>
-    <% @tag_list.each do |list| %>
-      <%= list.name %>
-      <%="(#{list.posts.count})" %>
+    <% @tag_list.each do |tag| %>
+  　   <i class="fas fa-tag"><%= tag.name %></i>
+      <%="(#{tag.posts.count})" %>
     <% end %>
+
+    <%# @tag_list.each do |list| %>
+      <!--<i class="fas fa-tag"><%#= post.tags.map(&:name).join(',') %></i>-->
+      <%#= list.name %>
+      <%#="(#{list.posts.count})" %>
+    <%# end %>
     
     <% @posts.each do |post| %>
-    <i class="fas fa-tag"><%= post.tags.map(&:name).join(',') %></i>
     <tr>
       <td>
         <%= link_to post.user do %>

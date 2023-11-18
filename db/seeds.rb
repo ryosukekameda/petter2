@@ -11,9 +11,10 @@ Admin.create!(
   )
 
 Tag.create([
-  { name: 'タグ1' },
-  { name: 'タグ2' },
-  { name: 'タグ3' },
-  { name: 'タグ4' },
-  { name: 'タグ5' }
+  { name: '犬' },
+  { name: '猫' },
+  { name: '鳥' },
+  { name: '爬虫類' },
+  { name: '昆虫' },
+  { name: 'その他' }
 ])

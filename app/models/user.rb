@@ -4,14 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲスト"
-      user.nickname = "げすと"
-      user.is_deleted = false
-    end
-  end
+  # def self.guest
+    # find_or_create_by!(email: 'guest@example.com') do |user|
+      # user.password = SecureRandom.urlsafe_base64
+      # user.name = "ゲスト"
+      # user.nickname = "げすと"
+      # user.is_deleted = false
+    # end
+  # end
   
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("name LIKE?","#{word}")
     elsif search == "forward_match"
       @user = User.where("name LIKE?","#{word}%")
     elsif search == "backward_match"

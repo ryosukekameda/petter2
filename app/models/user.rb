@@ -24,6 +24,10 @@ class User < ApplicationRecord
   has_one_attached :header_image
   has_one_attached :icon_image
   
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

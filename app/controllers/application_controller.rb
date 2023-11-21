@@ -2,22 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search
   
-  def search
-    @q = Post.ransack(params[:q])
-    @post = @q.result(distinct: true)
-    @result = params[:q]&.values&.reject(&blank?)
-  end
-
-  protected
-  
   def after_sign_in_path_for(resource)
-    case resource
-    when Admin
-      admin_path
-    when User
-      root_path
-    else
-      super # Deviseのデフォルトの挙動を呼び出す
+    if resource == :admin
+      # 管理者側の遷移先
+    elsif resource == :user
+      # 顧客側の遷移先
     end
   end
   
@@ -30,7 +19,25 @@ class ApplicationController < ActionController::Base
       root_path # または他のデフォルトのパス
     end
   end
+  
+  def search
+    @q = Post.ransack(params[:q])
+    @post = @q.result(distinct: true)
+    @result = params[:q]&.values&.reject(&blank?)
+  end
 
+  protected
+  
+  # def after_sign_in_path_for(resource)
+    # case resource
+    # when Admin
+      # admin_path
+    # when User
+      # root_path
+    # else
+      # super # Deviseのデフォルトの挙動を呼び出す
+    # end
+  # end
   
   def guest_sign_in
     user = User.guest
@@ -41,5 +48,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :nickname, :phone_number, :is_deleted, :is_user_status, :encrypted_password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 end

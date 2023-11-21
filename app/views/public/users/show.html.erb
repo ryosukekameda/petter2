@@ -2,7 +2,6 @@
     <div class="row justify-content-center">
       <% if user_signed_in? && @user == current_user %>
       <h1 class="font-weight-normal mt-5 mb-5">マイページ</h1>
-      <p><%= @user.posts.count %> Posts</p>
       <% else %>
       <h1 class="font-weight-normal mt-5 mb-5"><%= @user.name %>さんのページ</h1>
       <% end %>
@@ -13,6 +12,11 @@
     </div>
     
     <div>
+      <% if user_signed_in? %>
+        <p>User ID is: <%= current_user.id %></p>
+      <% end %>
+
+      <p><%= @user.posts.count %> Posts</p>
   　   <span><%= @user.followers.count %> Following</span>
       <span><%= @user.followeds.count %> Followers</span>
     </div>

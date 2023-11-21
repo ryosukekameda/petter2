@@ -67,4 +67,8 @@ gem 'ransack'
 
 gem 'kaminari','~> 1.2.1'
 
+gem 'rails_admin'
+
+gem 'cancancan'
+
 gem 'devise'

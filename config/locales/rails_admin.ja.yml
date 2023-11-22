@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+  # 全てのモデル記載
+    models:
+      user: ユーザー
+      admin: 管理者
+      post: 投稿
+      comment: コメント
+      favorite: いいね
+      followed: フォロー
+      follower: フォロワー
+      post_tag: 投稿タグ
+      tag: タグ
+      relationship: 繋がり
+      search: 検索
+    attributes:
+     # 各モデルのカラム名を記載
+      user:
+        name: ユーザー名
+        nickname: ニックネーム
+        introduction: 自己紹介
+        phone_number: 電話番号
+        header_image: ヘッダー画像
+        icon_image: アイコン画像
+        email: メールアドレス
+        password: パスワード
+      admin:
+        email: メールアドレス
+        password: パスワード
+      comment:
+        comment: コメント
+      post:
+        post_image: 投稿画像
+        body: 投稿内容
+      tag:
+        name: タグネーム

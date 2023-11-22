@@ -2,9 +2,12 @@
 
 <footer>
   <div class="container">
-    
+    <!--ログインしてるユーザーが管理者の場合のみ-->
     <div class="small text-center text-muted" style="margin: 50px 0;">
       CopyRight @ Petter
     </div>
+    <% if current_user.try(:admin?) %>
+      <%= link_to '管理者ログイン', rails_admin_path %>
+    <% end %>
   </div>
 </footer>

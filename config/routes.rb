@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :public do
     get 'notifications/index'
     get 'notifications/destroy'

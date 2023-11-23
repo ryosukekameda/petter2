@@ -33,3 +33,7 @@
   height: 100vh;
 }
 
+.card {
+  margin: 50px;
+  max-width: 30rem;
+}

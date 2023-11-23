@@ -46,8 +46,8 @@ class User < ApplicationRecord
   
   def get_header_image(width, height)
     unless header_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      header_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join('app/assets/images/1980x1080_image3.jpg')
+      header_image.attach(io: File.open(file_path), filename: '1980x1080_image3.jpg', content_type: 'image/jpeg')
     end
       header_image.variant(resize_to_limit: [width, height]).processed
   end

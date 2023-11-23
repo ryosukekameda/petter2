@@ -1,40 +1,34 @@
-<h1>投稿一覧</h1>
+<div class="row justify-content-center" style="margin: 10px;">
+  <h1>投稿一覧</h1>
+</div>
 
-<table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Body</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  
-  <% if @tag_list.present? %>
-  <tbody>
-    <% @tag_list.each do |tag| %>
-  　   <i class="fas fa-tag"><%= tag.name %></i>
-      <%="(#{tag.posts.count})" %>
-    <% end %>
-
-    <%# @tag_list.each do |list| %>
-      <!--<i class="fas fa-tag"><%#= post.tags.map(&:name).join(',') %></i>-->
-      <%#= list.name %>
-      <%#="(#{list.posts.count})" %>
-    <%# end %>
-    
-    <% @posts.each do |post| %>
-    <tr>
-      <td>
-        <%= link_to post.user do %>
-          <%= image_tag post.get_post_image(100, 100) %>
-        <% end %>
-      </td>
-      <td><%= link_to post.body, post_path(post.id) %></td>
-      <td><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></td>
-      <td><%= render "public/favorites/btn", post: post %></td>
-    </tr>
-    <% end %>
-  </tbody>
+<% if @tag_list.present? %>
+  <% @tag_list.each do |tag| %>
+    <i class="fas fa-tag"><%= tag.name %></i>
+    <%= "(#{tag.posts.count})" %>
   <% end %>
-</table>
+<% end %>
+
+  <div class="row">
+    <% @posts.each do |post| %>
+    
+      <div class="col-4">
+        <div class="card" style="max-width: 20rem; margin: 10px;">
+          <div class="row justify-content-center">
+            <img class="card-img-top", style="text-center">
+              <%= link_to post.user do %>
+                <%= image_tag post.get_post_image(380, 172) %>
+              <% end %>
+          </div>
+        <div class="card-body">
+          <h4 class="card-title">内容</h4>
+          <h6 class="card-text"><%= post.body %></h6>
+          <p class="card-text"><%= "#{post.comments.count} コメント" %></p>
+          <p class="card-text"><%= render "public/favorites/btn", post: post %></p>
+          <p class="card-text"><%= link_to "詳細", post_path(post.id), class:"btn btn-primary" %></p>
+        </div>
+        </div>
+      </div>
+    
+    <% end %>
+  </div>

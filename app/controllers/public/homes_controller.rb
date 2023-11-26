@@ -3,7 +3,7 @@ class Public::HomesController < ApplicationController
   
   def top
     @user = current_user
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @tag_list = Tag.all
   end
 

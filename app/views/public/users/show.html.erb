@@ -44,8 +44,8 @@
       
       <tbody>
         <tr>
-          <td>
-            <%= image_tag @user.get_icon_image(200, 200) %><br>
+          <td id="circle">
+            <%= image_tag @user.get_icon_image(200, 200), class:'rounded-circle' %><br>
           </td>
           <td>
             <%= @user.introduction %>

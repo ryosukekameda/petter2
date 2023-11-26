@@ -35,11 +35,23 @@
         
         <div class="form-group">
           <label class="form-label">アイコン画像</label><br>
-          <%= image_tag @user.get_icon_image(100, 100) %><br>
-          <%= f.file_field :icon_image, placeholder: "アイコン画像" %>
+          <span id="circle">
+            <%= image_tag @user.get_icon_image(100, 100), class:'rounded-circle' %><br>
+          </span>
+            <%= f.file_field :icon_image, placeholder: "アイコン画像" %>
         </div>
-      
-      <%= f.submit '保存する', class: "btn btn-success" %>
-      <%= link_to "退会する", unsubscribe_user_path, class:"btn btn-danger col-sm-3", style: "margin: 10px; width: 100px;" %>
-      <% end %>
+        
+          <div class="row justify-content-center">
+          <!-- 保存するボタン -->
+            <div class="col-sm-6">
+              <%= f.submit '保存する', class: "btn btn-success btn-block" %>
+            </div>
+
+          <!-- 退会するボタン -->
+            <div class="col-sm-6">
+              <%= link_to "退会する", unsubscribe_user_path, method: :delete, class:"btn btn-danger btn-block" %>
+            </div>
+          </div>
+          <!-- ボタンを含む行を終了 -->
+       <% end %>
     </div>

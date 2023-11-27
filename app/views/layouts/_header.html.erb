@@ -7,7 +7,6 @@
           <div class="col-4">
             <a href="https://a95495cb81024a2c8368044af895ba3b.vfs.cloud9.ap-northeast-1.amazonaws.com/" class="navbar-brand">
               <div="border p-2">
-                PETTER
               </div>
             </a>
           </div>
@@ -31,33 +30,7 @@
           </li>
         
           <li class="nav-item" style="margin-right:40px;">
-            ようこそ、<%= current_user.name %>さん!
-          </li>
-          
-          <li class="nav-item" style="margin-right:20px;">
-            <%= link_to root_path, style: "color:black;" do %>
-              <i class="fas fa-home" aria-hidden="true"></i>
-            <% end %>
-          </li>
-          
-          <li class="nav-item" style="margin-right:20px;">
-            <% if @user.present? %>
-              <%= link_to user_path(@user.id), style: "color:black;" do %>
-                <i class="fa-solid fa-user" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </li>
-          
-          <li class="nav-item" style="margin-right:20px;">
-            <%= link_to new_post_path, style: "color:black;" do %>
-              <i class="fa-solid fa-plus" aria-hidden="true"></i>
-            <% end %>
-          </li>
-          
-          <li class="nav-item" style="margin-right:20px;">
-            <%= link_to favorites_user_path(current_user), style: "color:black;" do %>
-              <i class="fa-solid fa-heart" aria-hidden="true"></i>
-            <% end %>
+            ようこそ、<%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %> <%= current_user.nickname %>さん!
           </li>
           
           <li class="nav-item" style="margin-right:20px;">
@@ -71,8 +44,6 @@
               <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
             <% end %>
           </li>
-          
-          <%= render "layouts/search" %>
                       
         <% else %>
         

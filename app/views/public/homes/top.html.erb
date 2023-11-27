@@ -1,27 +1,23 @@
 <div class="row justify-content-center">
-  <div class="col-9">
+  
+  <!--リスト-->
+  <div class="col-3">
+    <%= render 'layouts/list' %>
+  </div>
+  
+  <!--新規投稿、投稿一覧-->
+  <div class="col-6">
 
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
-
-      <h4>Image</h4>
-        <%= f.file_field :post_image, accept: "image/*" %>
   
-      <h4>Body</h4>
-        <%= f.text_area :body, class:"width: 100px;"%>
+      <h5><%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %></h5>
+        <%= f.text_area :body, style:"width: 90%", placeholder:"投稿"%>
   
-      <%= f.submit 'Post', class:"btn btn-primary rounded-pill" %>
+      <%= f.file_field :post_image, accept: "image/*" %> <%= f.submit 'Post', class:"btn btn-primary rounded-pill" %>
     <% end %>
-  </div>
-</div>
 
-<div class="row justify-content-center" style="margin: 10px;">
-  <h1>投稿一覧</h1>
-</div>
-
-  <div class="row justify-content-center">
     <% @posts.each do |post| %>
     
-      <div class="col-9">
         <div class="card" style="max-width: 100rem; margin: 10px;">
           <div class="card-header">
             <%= image_tag post.user.get_icon_image(50, 50), class:'rounded-circle' %>
@@ -30,7 +26,7 @@
           <div class="row justify-content-center">
             <img class="card-img-top", style="text-center">
               <%= link_to post.user do %>
-                <%= image_tag post.get_post_image(580, 372) %>
+                <%= image_tag post.get_post_image(480, 272) %>
               <% end %>
           </div>
         <div class="card-body">
@@ -41,10 +37,18 @@
           <p class="card-text"><%= link_to "詳細", post_path(post.id), class:"btn btn-primary" %></p>
         </div>
         </div>
-      </div>
     
     <% end %>
+    
   </div>
+  
+    <!--検索フォーム-->
+    <div class="col-3">
+      <%= render 'layouts/search' %>
+    </div>
+  
+</div>
+  
   
   <nav class="row justify-content-center" aria-label="pagination">
       <ul class="pagination">
@@ -55,3 +59,4 @@
         <li class="page-item"><a class="page-link" href="#">後</a></li>
       </ul>
     </nav>
+    

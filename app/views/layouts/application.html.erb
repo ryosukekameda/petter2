@@ -27,20 +27,6 @@
     
       </body>
       
-    <% elsif admin_signed_in? %>
-    
-      <body id="wrapper" style="background-color: #EEEEEE;">
-        <div id="header">
-          <%= render "layouts/header" %>
-        </div>
-          
-        <div class="container">
-          <%= yield %>
-        </div>
-        
-        <%= render "layouts/footer" %>
-      </body>
-      
     <% else %>
     
       <body id="wrapper" style="background=color: white;">

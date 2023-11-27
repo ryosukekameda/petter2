@@ -35,5 +35,18 @@
 
 .card {
   margin: 50px;
-  max-width: 30rem;
+  max-width: 100rem;
+}
+
+.no-bullets {
+  list-style-type: none; /* リスト項目の点を消す */
+  padding-left: 0; /* 左のパディングを削除する（必要に応じて） */
+}
+
+.menu-list {
+  margin-right: 50px;
+}
+
+.form-body {
+  width: 100%;
 }

@@ -15,7 +15,7 @@
     
     <div>
       <% if user_signed_in? %>
-        <p>User ID is: <%= post.user.id %></p>
+        <p>User ID is: <%= @post.user.id %></p>
       <% end %>
 
       <p><%= @user.posts.count %> Posts</p>

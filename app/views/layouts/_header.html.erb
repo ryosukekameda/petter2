@@ -1,55 +1,107 @@
-<header>
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">PETTER</a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<header class="sticky-top">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <div class="container">
+        <div class="row-100">
+          
+          <div class="col-4">
+            <a href="https://a95495cb81024a2c8368044af895ba3b.vfs.cloud9.ap-northeast-1.amazonaws.com/" class="navbar-brand">
+              <div="border p-2">
+                PETTER
+              </div>
+            </a>
+          </div>
+          
+    <div class="col-8 text-right">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="<%= root_path %>">
-          ホーム<span class="visually-hidden">（現在地）</span>
-        </a>
-        <a class="nav-item nav-link" href="#">リンク1</a>
-        <a class="nav-item nav-link" href="#">リンク2</a>
-        <a class="nav-item nav-link" href="#">リンク3</a>
-      </div>
-    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
     
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
-    
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown link
-      </a>
+      <ul class="navbar-nav ml-auto">
+        
+        <% if user_signed_in? %>
+        
+          <li class="nav-item" style="margin-right:40px;">
+            <% flash.each do |key, message| %>
+              <div class="flash <%= key %>"><%= message %></div>
+            <% end %>
+          </li>
+        
+          <li class="nav-item" style="margin-right:40px;">
+            ようこそ、<%= current_user.name %>さん!
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to root_path, style: "color:black;" do %>
+              <i class="fas fa-home" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <% if @user.present? %>
+              <%= link_to user_path(@user.id), style: "color:black;" do %>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to new_post_path, style: "color:black;" do %>
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to favorites_user_path(current_user), style: "color:black;" do %>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to about_path, style: "color:black;" do %>
+              <i class="fa-solid fa-link" aria-hidden="true"></i>
+            <% end %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to destroy_user_session_path, method: :delete, style: "color:black;" do %>
+              <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          
+          <%= render "layouts/search" %>
+                      
+        <% else %>
+        
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "トップページ", root_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "新規登録", new_user_registration_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "ログイン", new_user_session_path, style: "color:black;" %>
+          </li>
+         
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "About", about_path, style: "color:black;" %>
+          </li>
+          
+          <li class="nav-item" style="margin-right:20px;">
+            <%= link_to "Admin", new_admin_session_path, style: "color:black;" %>
+          </li>
+            
+        <% end %>
 
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+        </ul>
+      </div>
+      </div>
+      </div>
     </div>
-
-    <form class="row gx-2">
-      <div class="col-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="検索キーワード" aria-label="検索キーワード">
-      </div>
-      <div class="col-auto">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">検索</button>
-      </div>
-    </form>
-  </div>
-</nav>
+  </nav>
 </header>

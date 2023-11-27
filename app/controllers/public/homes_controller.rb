@@ -3,7 +3,7 @@ class Public::HomesController < ApplicationController
   
   def top
     @user = current_user
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).all.order(created_at: :desc)
     @tag_list = Tag.all
   end
 

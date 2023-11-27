@@ -1,23 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-9">
+
+    <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
+
+      <h4>Image</h4>
+        <%= f.file_field :post_image, accept: "image/*" %>
+  
+      <h4>Body</h4>
+        <%= f.text_area :body, class:"width: 100px;"%>
+  
+      <%= f.submit 'Post', class:"btn btn-primary rounded-pill" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="row justify-content-center" style="margin: 10px;">
   <h1>投稿一覧</h1>
 </div>
 
-<% if @tag_list.present? %>
-  <% @tag_list.each do |tag| %>
-    <i class="fas fa-tag"><%= tag.name %></i>
-    <%= "(#{tag.posts.count})" %>
-  <% end %>
-<% end %>
-
-  <div class="row">
+  <div class="row justify-content-center">
     <% @posts.each do |post| %>
     
-      <div class="col-4">
-        <div class="card" style="max-width: 20rem; margin: 10px;">
+      <div class="col-9">
+        <div class="card" style="max-width: 100rem; margin: 10px;">
+          <div class="card-header">
+            <%= image_tag post.user.get_icon_image(50, 50), class:'rounded-circle' %>
+            <%= post.user.name %>
+          </div>
           <div class="row justify-content-center">
             <img class="card-img-top", style="text-center">
               <%= link_to post.user do %>
-                <%= image_tag post.get_post_image(380, 172) %>
+                <%= image_tag post.get_post_image(580, 372) %>
               <% end %>
           </div>
         <div class="card-body">

@@ -1,27 +1,29 @@
+<!--リスト-->
 <div class="menu-list">
-  <h2>PETTER</h2>
+  <h2 class="logo">
+  </h2>
   
     <% if user_signed_in? %>
     
-    <h3>
-      <ul class="no-bullets">
-        <li><%= link_to "Home", root_path, style: "color:black;" %></li>
-        <li><%= link_to "User", user_path(@user.id), style: "color:black;" %></li>
-        <li><%= link_to "Favorite", favorites_user_path(current_user), style: "color:black;" %></li>
-        <li><%= link_to "About", about_path, style: "color:black;" %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, style: "color:black;" %></li>
-      </ul>
-    </h3>
+    <div class="card" style="max-width: 200rem;">
+      <div class="card-body">
+        <p class="card-text"><%= link_to "Home", root_path, style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "User", user_path(@user.id), style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "Favorite", favorites_user_path(current_user), style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "About", about_path, style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "Log Out", destroy_user_session_path, method: :delete, style: "color:black;" %></p>
+      </div>
+    </div>
       
     <% else %>
-      
-    <h3>
-      <ul class="no-bullets">
-        <li><%= link_to "Sign In", new_user_registration_path, style: "color:black;" %></li>
-        <li><%= link_to "Log In", new_user_session_path, style: "color:black;" %></li>
-        <li><%= link_to "About", about_path, style: "color:black;" %></li>
-      </ul>
-    </h3>
+    
+    <div class="card" style="max-width: 200rem;">
+      <div class="card-body">
+        <p class="card-text"><%= link_to "Sign In", new_user_registration_path, style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "Log In", new_user_session_path, style: "color:black;" %></p>
+        <p class="card-text"><%= link_to "About", about_path, style: "color:black;" %></p>
+      </div>
+    </div>
     
     <% end %>
   

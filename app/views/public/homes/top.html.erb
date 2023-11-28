@@ -5,7 +5,9 @@
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
       <div class="card-new">
         <div class="card-text d-flex align-items-center">
-          <%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %>
+          <%= link_to user_path(@user.id) do %>
+            <%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %>
+          <% end %>
           <%= f.text_area :body, style:"width: 90%; padding: 10px; border: none; outline: none;", placeholder:"何が起こっている？！"%>
         </div>
         <div class="card-text">
@@ -13,6 +15,7 @@
             <i class="fa-regular fa-image" style="font-size: 30px;"></i>
           </label>
           <%= f.file_field :post_image, accept: "image/*", style: "display: none;", id: "post_image", class:"image-preview-input"%>
+          Media
           <img id="image-preview" style="max-width: 20px; display: none;" />
             <div class="d-flex justify-content-end" style="flex-grow: 1;">
               <%= f.submit 'Post', class: "btn btn-primary rounded-pill", style: "width: 100px;" %>

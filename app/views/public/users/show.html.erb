@@ -1,24 +1,26 @@
-
-    <div class="row justify-content-center">
-      <% if user_signed_in? && @user == current_user %>
-      <h1 class="font-weight-normal mt-5 mb-5">マイページ</h1>
-      <% else %>
-      <h1 class="font-weight-normal mt-5 mb-5"><%= @user.name %>さんのページ</h1>
-      <% end %>
+<div class="col-6">
+  <div class="card">
+    <div class="card-header">
+      <%= image_tag @user.get_icon_image(50, 50), class:'rounded-circle' %>
+        <% if user_signed_in? && @user == current_user %>
+          <h5><%= @user.name %></h5>
+        <% else %>
+          <h5><%= @user.name %></h5>
+        <% end %>
+        <p><%= @user.posts.count %> Posts</p>
     </div>
     
     <div class="row justify-content-center">
       <div class="header-image">
-        <%= image_tag @user.get_header_image(1280, 720) %><br>
+        <%= image_tag @user.get_header_image(780, 220) %><br>
       </div>
     </div>
     
     <div>
-      <% if user_signed_in? %>
-        <p>User ID is: <%= @post.user.id %></p>
-      <% end %>
+      <!--<%# if user_signed_in? %>-->
+        <!--<p>User ID is: <%#= @post.user.id %></p>-->
+      <%# end %>
 
-      <p><%= @user.posts.count %> Posts</p>
   　   <span><%= @user.followers.count %> Following</span>
       <span><%= @user.followeds.count %> Followers</span>
     </div>
@@ -30,58 +32,28 @@
 
     <% if user_signed_in? && @user == current_user %>
       <p class="d-flex justify-content-end">
-        <%= link_to "Edit plofile", edit_user_path(@user), class: "btn btn-success", style: "width: 120px;" %>
+        <%= link_to "Edit plofile", edit_user_path(@user), class: "btn btn-outline-secondary rounded-pill", style: "width: 120px; margin-right: 10px;" %>
       </p>
     <% end %>
     
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Icon Image</th>
-          <th>Introduction</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr>
-          <td id="circle">
-            <%= image_tag @user.get_icon_image(200, 200), class:'rounded-circle' %><br>
-          </td>
-          <td>
-            <%= @user.introduction %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
     
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Body</th>
-          <th>Comment</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.get_post_image(100, 100) %>
-            <% end %>
-          </td>
-          <td>
-            <%= post.body %>
-          </td>
-          <td>
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-header">
+        <%= image_tag @user.get_icon_image(50, 50) %>
+        </div>
+        <div class="card-body">
+          <%= post.body %>
+          <div class="row justify-content-center">
+            <%= image_tag post.get_post_image(480, 272) %>
             <%= "#{post.comments.count} コメント" %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>  
+    <% end %>
+      
     
     <%= paginate @posts %>  
-
+</div>
 

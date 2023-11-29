@@ -1,7 +1,6 @@
 <div class="col-6">
   <div class="card">
     <div class="card-header">
-      <%= image_tag @user.get_icon_image(50, 50), class:'rounded-circle' %>
         <% if user_signed_in? && @user == current_user %>
           <h5><%= @user.name %></h5>
         <% else %>
@@ -11,18 +10,30 @@
     </div>
     
     <div class="row justify-content-center">
-      <div class="header-image">
-        <%= image_tag @user.get_header_image(780, 220) %><br>
+      <div class="header-image" style="position: relative; width: 95%; max-width: 100%; padding: 0;">
+        <%= image_tag @user.get_header_image(780, 220), style: 'width: 100%; height: auto;' %>
+        <div class="user-icon" style="position: absolute; bottom: -25px; left: 10px; z-index: 3;">
+          <%= image_tag @user.get_icon_image(100, 100), class: 'rounded-circle' %>
+        </div>
       </div>
+    </div>
+    
+    <div style="margin: 40px 0 0 10px;"><%= @user.name %></div>
+    <div style="color: #aaa; margin: 0 0 10px 10px;"> <!-- Adjust padding-top to fit the icon image size -->
+      <%= @user.nickname %>
+      <!-- other user info goes here -->
     </div>
     
     <div>
       <!--<%# if user_signed_in? %>-->
         <!--<p>User ID is: <%#= @post.user.id %></p>-->
       <%# end %>
-
-  　   <span><%= @user.followers.count %> Following</span>
-      <span><%= @user.followeds.count %> Followers</span>
+      <div style="margin: 10px;"><%= @user.introduction %></div>
+      <div style="color: #aaa; margin: 10px;"><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+      <div>
+        <span style="margin: 10px;"><%= @user.followers.count %> Following</span>
+        <span style="margin: 10px;"><%= @user.followeds.count %> Followers</span>
+      </div>
     </div>
       
     <% unless user_signed_in? && @user == current_user %>
@@ -46,9 +57,11 @@
         <div class="card-body">
           <%= post.body %>
           <div class="row justify-content-center">
-            <%= image_tag post.get_post_image(480, 272) %>
-            <%= "#{post.comments.count} コメント" %>
+            <%= image_tag post.get_post_image(530, 322) %>
           </div>
+        </div>
+        <div class="card-footer">
+          <%= "#{post.comments.count} コメント" %>
         </div>
       </div>  
     <% end %>

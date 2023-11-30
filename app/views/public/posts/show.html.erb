@@ -1,19 +1,47 @@
-<div class="row">
-  <div class="col-10">
-    <h2>投稿詳細</h2>
+
+  <div class="col-6 posts-container">
+    <div class="back-button-container" style="display: flex; align-items: center;">
+      <%= link_to '←', :back, class: "back-button" %>
+      <h2>Post</h2>
+    </div>
     
-    <table class="table">
-      <tr>
-        <td>
+    <!--投稿本文-->
+      <div class="card">
+        <div class="card-header">
+          <span>
+            <%= image_tag @post.user.get_icon_image(50, 50), class:'rounded-circle' %>
+          </span>
+          <span style="color: #aaa;">
+            <%= @post.user.nickname %>
+          </span>
+        </div>
+        <div class="card-body">
           <%= link_to @post.user do %>
-            <%= image_tag @post.get_post_image(300, 300) %><br>
-            <%= @post.user.name %>
+            <p style="color: black;"><%= @post.body %></p>
+            <p class="text-center"><%= image_tag @post.get_post_image(780, 220), style:'width: 100%; height: auto;' %></p>
           <% end %>
-        </td>
-        <td><%= @post.body %></td>
-        <td><%= render "public/favorites/btn", post: @post %></td>
-      </tr>
-    </table>
+            <p style="color: #aaa;"><%= @post.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+        </div>
+        <div class="card-footer">
+          <%= @post.comments.count %>
+          <%= render "public/favorites/btn", post: @post %>
+        </div>
+      </div>
+      
+    <!--コメント投稿-->
+      <div class="card">
+        <div class="card-body">
+          <%= form_with model: [@post, @comment] do |f| %>
+          <div style="display: flex; align-items: center;">
+            <%= image_tag @user.get_icon_image(50, 50), class:'rounded-circle' %>
+            <%= f.text_area :comment, style:"width: 90%; padding: 10px; border: none; outline: none;", rows: '2', placeholder: "コメントを投稿する" %>
+          </div>
+          <div style="text-align: right;">
+            <%= f.submit "送信", class:"btn btn-outline-primary rounded-pill", style: "width: 100px; margin-top: 10px;" %>
+          </div>        
+          <% end %>
+        </div>
+      </div>
     
     <table  class="table">
       <% @post_tags.each do |tag| %>
@@ -23,7 +51,7 @@
     
     <table class="table">
       <tr>
-        <td><%= @post.comments.count %>
+        <td>
           <% @post.comments.each do |comment| %>
             <%= image_tag comment.user.get_icon_image(100, 100) %>
             <%= comment.user.name %>
@@ -37,20 +65,8 @@
       </tr>
     </table>
     
-    <table class="table">
-      <tr>
-        <td>
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    
     <% if @post.user == current_user %>
       <td><%= link_to "Edit", edit_post_path(@post), class: "btn btn-success" %></td>
       <td><%= link_to "Destroy", @post, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %></td>
     <% end %>
   </div>
-</div>

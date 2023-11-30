@@ -1,56 +1,75 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.nav-item {
-    margin-right: 15px; /* この値は必要に応じて調整できます */
-}
-
-.nav-item:last-child {
-    margin-right: 0;
+.posts-container {
+    max-height: 1000px;
+    overflow-y: auto;
 }
 
 .header-image {
   background-repeat: no-repeat;
   background-size: contain;
-  height: 100vh;
 }
 
-.card {
-  margin: 50px;
-  max-width: 100rem;
+.back-button-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
-.no-bullets {
-  list-style-type: none; /* リスト項目の点を消す */
-  padding-left: 0; /* 左のパディングを削除する（必要に応じて） */
+.back-button {
+  font-size: 30px;
+  background: transparent;
+  border: none;
+  color: gray; /* 文字色を白に設定 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px; /* 適宜調整 */
+  text-decoration: none; /* テキストの下線を消す */
 }
 
-.menu-list {
-  margin-right: 50px;
+.back-button::before {
+  display: inline-block;
+  margin-right: 8px; /* アイコンとテキストの間隔 */
 }
 
-.form-body {
-  width: 100%;
+.list-post-button {
+  margin: 20px 0 0 0;
 }
 
-.card-new {
-  padding: 10px;
+.user-post-body {
+  margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+/* 追加されたスタイルの例 */
+.user-icon {
+  position: absolute;
+  bottom: -25px;
+  left: 10px;
+  z-index: 3;
+}
+
+.user-icon:hover {
+  /* 光る効果を取り除くスタイル */
+  box-shadow: none;
+  transform: none;
+}
+
+
+.follow-btn-container {
+  position: absolute;
+  bottom: -25px;
+  right: 10px;
+  z-index: 3;
 }

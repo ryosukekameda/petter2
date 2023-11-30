@@ -8,8 +8,10 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../stylesheets/product.css";
 
-      document.addEventListener("turbolinks:load", function() {
+
+document.addEventListener("turbolinks:load", function() {
         const input = document.querySelector('#post_image');
         const preview = document.querySelector('#image-preview');
 
@@ -22,7 +24,6 @@ import "../stylesheets/application";
               preview.src = e.target.result;
               preview.style.display = 'block';
             };
-
             reader.readAsDataURL(file);
           }
         });

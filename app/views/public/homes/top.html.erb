@@ -1,5 +1,5 @@
 
-  <div class="col-6">
+  <div class="col-6 posts-container">
     
     <!--新規投稿-->
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
@@ -16,7 +16,7 @@
           </label>
           <%= f.file_field :post_image, accept: "image/*", style: "display: none;", id: "post_image", class:"image-preview-input"%>
           Media
-          <img id="image-preview" style="max-width: 100px; display: none;" />
+            <img id="image-preview" style="max-width: 200px; display: none;" />
             <div class="d-flex justify-content-end" style="flex-grow: 1;">
               <%= f.submit 'Post', class: "btn btn-primary rounded-pill", style: "width: 100px;" %>
             </div>
@@ -42,11 +42,11 @@
           <div class="card-body">
             <%= link_to post_path(post.id) do %>
             <div style="padding: 10px;">
-              <p style="color: black; text-decoration: none"><%= post.body %></p>
+              <p style="color: black; text-decoration: none;"><%= post.body %></p>
             </div>
             <div class="row justify-content-center">
               <img class="card-img-top", style="text-center">
-                <%= image_tag post.get_post_image(480, 272) %>
+                <%= image_tag post.get_post_image(530, 322), style:'width: 100%; height: auto;' %>
             <% end %>
             </div>
           </div>
@@ -65,5 +65,6 @@
         </div>
 
     <% end %>
+    
   </div>
     

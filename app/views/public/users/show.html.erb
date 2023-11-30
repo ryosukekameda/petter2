@@ -1,20 +1,36 @@
-<div class="col-6">
+<div class="col-6 posts-container">
+  
+  <!--ユーザー詳細-->
   <div class="card">
     <div class="card-header">
-        <% if user_signed_in? && @user == current_user %>
-          <h5><%= @user.name %></h5>
-        <% else %>
-          <h5><%= @user.name %></h5>
-        <% end %>
-        <p><%= @user.posts.count %> Posts</p>
+      <div class="back-button-container" style="display: flex; align-items: center;">
+      <%= link_to '←', :back, class: "back-button" %>
+        <div>
+          <% if user_signed_in? && @user == current_user %>
+            <h5><%= @user.name %></h5>
+          <% else %>
+            <h5><%= @user.name %></h5>
+          <% end %>
+          <p><%= @user.posts.count %> Posts</p>  
+        </div>
+      </div>
     </div>
     
     <div class="row justify-content-center">
       <div class="header-image" style="position: relative; width: 95%; max-width: 100%; padding: 0;">
-        <%= image_tag @user.get_header_image(780, 220), style: 'width: 100%; height: auto;' %>
-        <div class="user-icon" style="position: absolute; bottom: -25px; left: 10px; z-index: 3;">
+        <% if @user.header_image.attached? %>
+          <%= image_tag @user.get_header_image(780, 220), style: 'width: 100%; height: auto;' %>
+        <% else %>
+          <%= image_tag '1980x1080_image3.jpg' %>
+        <% end %>
+        <div class="user-icon">
           <%= image_tag @user.get_icon_image(100, 100), class: 'rounded-circle' %>
         </div>
+          <% unless user_signed_in? && @user == current_user %>
+            <div class="follow-btn-container">
+              <%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %>
+            </div>
+          <% end %>
       </div>
     </div>
     
@@ -36,9 +52,7 @@
       </div>
     </div>
       
-    <% unless user_signed_in? && @user == current_user %>
-      <p><%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %></p>
-    <% end %>
+    
 
 
     <% if user_signed_in? && @user == current_user %>
@@ -46,19 +60,23 @@
         <%= link_to "Edit plofile", edit_user_path(@user), class: "btn btn-outline-secondary rounded-pill", style: "width: 120px; margin-right: 10px;" %>
       </p>
     <% end %>
-    
   </div>
     
+    <!--ユーザー投稿-->
     <% @posts.each do |post| %>
       <div class="card">
         <div class="card-header">
         <%= image_tag @user.get_icon_image(50, 50) %>
         </div>
         <div class="card-body">
-          <%= post.body %>
+          <%= link_to post_path(post.id) do %>
+          <div class="user-post-body">
+            <%= post.body %>
+          </div>
           <div class="row justify-content-center">
             <%= image_tag post.get_post_image(530, 322) %>
           </div>
+          <% end %>
         </div>
         <div class="card-footer">
           <%= "#{post.comments.count} コメント" %>

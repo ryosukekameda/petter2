@@ -1,7 +1,6 @@
 <!--リスト-->
 <div class="menu-list">
-  <h2 class="logo">
-  </h2>
+  <h2 class="logo"></h2>
   
     <% if user_signed_in? %>
     
@@ -14,7 +13,15 @@
         <p class="card-text"><%= link_to "Log Out", destroy_user_session_path, method: :delete, style: "color:black;" %></p>
       </div>
     </div>
-      
+
+    <%# Postボタン %>
+      <div class="list-post-button text-center">
+        <%= link_to 'Post',new_post_path, class: "btn btn-primary rounded-pill", remote: true, style:"width: 200px; height: 50px;" %>
+      </div>
+      <div id="mask" class="hidden"></div>
+      <div id="modal" class="hidden"></div>
+
+    
     <% else %>
     
     <div class="card" style="max-width: 200rem;">

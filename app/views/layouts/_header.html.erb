@@ -29,10 +29,15 @@
               <div class="flash <%= key %>"><%= message %></div>
             <% end %>
           </li>
-        
+          
           <li class="nav-item" style="margin-right:40px;">
-            ようこそ、<%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %> <%= current_user.nickname %>さん!
+            ようこそ、
+              <%= link_to user_path(current_user.id) do %> 
+                <%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %>
+              <% end %>  
+            <%= current_user.nickname %>さん!
           </li>
+          
                       
         <% else %>
         

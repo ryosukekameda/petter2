@@ -1,13 +1,15 @@
 <!--新規投稿-->
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
-      <div class="card-new">
-        <div class="card-text d-flex align-items-center">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
           <%= link_to user_path(@user.id) do %>
             <%= image_tag current_user.get_icon_image(50, 50), class:'rounded-circle' %>
           <% end %>
+        </div>
+        <div class="card-body">
           <%= f.text_area :body, style:"width: 90%; padding: 10px; border: none; outline: none;", placeholder:"何が起こっている？！"%>
         </div>
-        <div class="card-text">
+        <div class="card-footer">
           <label for="post_image" class="custom-file-upload;">
             <i class="fa-regular fa-image" style="font-size: 30px;"></i>
           </label>

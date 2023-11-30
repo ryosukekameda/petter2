@@ -73,3 +73,43 @@
   right: 10px;
   z-index: 3;
 }
+
+.card-text-list a {
+  color: black;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.card-text-list i {
+  font-size: 30px; /* アイコンのフォントサイズ */
+  margin-bottom: 25px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%; /* ボタンの下に表示 */
+  z-index: 1000; /* 他の要素の上に表示 */
+}
+
+/* ドロップダウンメニューを開いたときのボタンのスタイルを変更するための追加スタイル */
+.btn-link.dropdown-toggle::after {
+  display: none; /* デフォルトの矢印を非表示に */
+}
+
+.btn-link.dropdown-toggle:focus {
+  box-shadow: none; /* フォーカス時のアウトラインを削除 */
+}
+
+/* FontAwesomeのアイコンサイズを調整 */
+.fas.fa-ellipsis-v {
+  font-size: 24px;
+}
+
+.comment-date {
+  color: #aaa;
+}

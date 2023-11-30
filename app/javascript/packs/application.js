@@ -10,6 +10,7 @@ import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/product.css";
 
+alert('次はユーザー編集');
 
 document.addEventListener("turbolinks:load", function() {
         const input = document.querySelector('#post_image');

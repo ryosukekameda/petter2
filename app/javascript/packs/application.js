@@ -10,7 +10,7 @@ import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/product.css";
 
-alert('次はユーザー編集');
+// alert('次はユーザー編集');
 
 document.addEventListener("turbolinks:load", function() {
         const input = document.querySelector('#post_image');
@@ -29,6 +29,22 @@ document.addEventListener("turbolinks:load", function() {
           }
         });
       });
+      
+      document.addEventListener("turbolinks:load", function() {
+      // ヘッダー画像のクリックイベント
+      var headerImage = document.getElementById('header-image');
+      var headerImageInput = document.getElementById('user_header_image');
+      headerImage.addEventListener('click', function() {
+        headerImageInput.click();
+      });
+    
+      // アイコン画像のクリックイベント
+      var iconImage = document.getElementById('icon-image');
+      var iconImageInput = document.getElementById('user_icon_image');
+      iconImage.addEventListener('click', function() {
+        iconImageInput.click();
+      });
+    });
 
 Rails.start()
 Turbolinks.start()

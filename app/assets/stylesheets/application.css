@@ -10,7 +10,7 @@
 }
 
 .posts-container {
-    max-height: 1000px;
+    max-height: 1200px;
     overflow-y: auto;
 }
 
@@ -112,4 +112,34 @@
 
 .comment-date {
   color: #aaa;
+}
+
+.card-body-edit {
+  padding: 0;
+}
+
+.edit-header_image {
+  position: relative;
+  width: 100;
+  height: auto; /* アスペクト比を維持 */
+  overflow: hidden; /* もしヘッダー画像が枠を越えたら隠す */
+}
+
+/* ヘッダー画像自体のスタイルを調整 */
+#header-image {
+  width: 100%; /* 横幅いっぱいに */
+  height: auto; /* アスペクト比を維持 */
+  display: block; /* ブロック要素として扱い、余白を取り除く */
+}
+
+.edit-icon-image {
+  position: absolute;
+  bottom: 300px; /* ヘッダー画像の下に半分だけアイコンが出るように設定 */
+  left: 5%; /* 横方向の中心に来るように設定 */
+  transform: translateX(0%); /* アイコンの中心が正確にヘッダーの中心に来るように調整 */
+  z-index: 3; /* ヘッダー画像より前面に表示 */
+}
+
+.card-text-edit {
+  margin-top: 30px;
 }

@@ -1,16 +1,18 @@
-<table class="table">
-  <thead>
-    <tr>
-      <td>Image</td>
-      <td>Body</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @favorite_posts.each do |post| %>
+<div class="col-6 posts-container">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to image_tag(post.get_post_image(150, 150)), post_path(post) %></td>
-        <td><%= post.body %></td>
+        <td>Image</td>
+        <td>Body</td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @favorite_posts.each do |post| %>
+        <tr>
+          <td><%= link_to image_tag(post.get_post_image(150, 150)), post_path(post) %></td>
+          <td><%= post.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

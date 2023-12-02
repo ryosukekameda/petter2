@@ -132,14 +132,77 @@
   display: block; /* ブロック要素として扱い、余白を取り除く */
 }
 
+/* アイコンとドロップダウンの親要素に相対位置を設定 */
+.icon-leader {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 15px; /* ドロップダウンボタンに余白を追加 */
+}
+
 .edit-icon-image {
   position: absolute;
-  bottom: 300px; /* ヘッダー画像の下に半分だけアイコンが出るように設定 */
+  bottom: 0; /* ヘッダー画像の下に半分だけアイコンが出るように設定 */
   left: 5%; /* 横方向の中心に来るように設定 */
   transform: translateX(0%); /* アイコンの中心が正確にヘッダーの中心に来るように調整 */
   z-index: 3; /* ヘッダー画像より前面に表示 */
 }
 
+/* ドロップダウンボタンを右端に固定 */
+.dropdown {
+  position: absolute;
+  right: -470px; /* 右端に配置 */
+  top: 50%; /* 縦方向の中央に来るように設定 */
+  transform: translateY(-10%); /* ボタンの中心が親要素の縦方向中央に来るように調整 */
+}
+
 .card-text-edit {
-  margin-top: 30px;
+  max-width: 500px; /* 最大幅を500pxに設定 */
+  margin: auto; /* 自動的に中央揃え */
+  margin-top: 10px;
+  padding: 10px 0; /* 上下に10pxのパディング */
+}
+
+.form-control {
+  width: 100%; /* フォームコントロールの幅を100%に */
+  margin-bottom: 10px; /* フォームコントロール間のマージン */
+}
+
+/* 3点リーダーボタンのスタイル調整 */
+.dropdown-toggle::after {
+  display: none; /* デフォルトの矢印を非表示 */
+}
+
+/* ドロップダウンメニューを右側に表示 */
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
+/* Add photoアイコンのスタイル */
+.add-photo-icon {
+  position: absolute;
+  top: -50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  font-size: 24px; /* アイコンのサイズ調整 */
+  z-index: 5;
+}
+
+/* ホバー時に表示されるテキストのスタイル */
+.add-photo-icon:hover::after {
+  content: 'Add photo';
+  position: absolute;
+  top: 120%; /* アイコンの下に表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap; /* テキストが折り返されないように */
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 6;
 }

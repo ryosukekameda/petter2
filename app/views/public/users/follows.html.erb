@@ -1,33 +1,27 @@
-<h2>Follows</h2>
-  <table class='table'>
-    
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>name</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
+<div class="col-6 posts-container">
+  <div class="card">
+    <% @users.each do |user| %>
+        <div class="card-header-follow">
+          <div>
             <%= link_to user_path(user) do %>
               <%= image_tag user.get_icon_image(50, 50) %>
             <% end %>
-          </td>
-          <td>
-            <%= user.name %>
-          </td>
-          <td>
-            <%= link_to follows_user_path(user) do %>
-              <h6>フォロー<%= user.followers.count %></h6>
-            <% end %> 
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-    
-  </table>
+            <%= user.nickname %>
+          </div>
+          <div>
+              <% unless user_signed_in? && current_user == user %>
+                <div class="follow-btn-container2">
+                  <!-- user変数を部分テンプレートに渡す -->
+                  <div class="follow-btn">
+                    <%= render partial: "/public/relationships/follow_btn", locals: { user: user } %>
+                  </div>
+                </div>
+              <% end %>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= user.introduction %>
+        </div>
+    <% end %> 
+  </div>
+</div>

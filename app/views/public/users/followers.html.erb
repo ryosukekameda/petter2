@@ -1,38 +1,13 @@
-<h2>Followers</h2>
-  <table class='table'>
-    
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Nmae</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @user.each do |user| %>
-        <tr>
-          <td>
-            <%= link_to user_path(user) %>
-              <%= image_tag user.get_icon_image(50, 50) %>
-            <% end %>
-          </td>
-          <td>
-            <%= user.name %>
-          </td>
-          <td>
-            <%= link_to follows_user_path(user) do %>
-              <p>フォロー<%= user.followers.count %></p>
-            <% end %>
-          </td>
-          <td>
-            <%=link_to followers_user_path(user) do %>
-              <p>フォロワー<%= user.followed.count %></p>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-    
-  </table>
+<div class="col-6 posts-container">
+  <div class="card">
+    <% @users.each do |user| %>
+      <div class="card-body">
+        <%= link_to user_path(user) %>
+          <%= image_tag user.get_icon_image(50, 50) %>
+        <% end %>
+        <%= user.name %>
+        <%= user.introduction %>
+      </div>
+    <% end %>  
+  </div>
+</div>

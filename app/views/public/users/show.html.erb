@@ -47,8 +47,12 @@
       <div style="margin: 10px;"><%= @user.introduction %></div>
       <div style="color: #aaa; margin: 10px;"><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
       <div>
-        <span style="margin: 10px;"><%= @user.followers.count %> Following</span>
-        <span style="margin: 10px;"><%= @user.followeds.count %> Followers</span>
+        <%= link_to follows_user_path do %>
+          <span style="margin: 10px;"><%= @user.followers.count %> Following</span>
+        <% end %>
+        <%= link_to followers_user_path do %>
+          <span style="margin: 10px;"><%= @user.followeds.count %> Followers</span>
+        <% end %>
       </div>
     </div>
 

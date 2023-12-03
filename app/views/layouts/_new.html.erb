@@ -1,4 +1,5 @@
 <!--新規投稿-->
+<div class="col-6 posts-container">
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
       <div class="card">
         <div class="card-header d-flex align-items-center">
@@ -22,3 +23,4 @@
         </div>
       </div>
     <% end %>
+  </div>

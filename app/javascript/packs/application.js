@@ -8,9 +8,10 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "../stylesheets/product.css";
+import "../stylesheets/new.css";
 
-// alert('次はユーザー編集');
+
+ alert('session編集');
 
 document.addEventListener("turbolinks:load", function() {
         const input = document.querySelector('#post_image');
@@ -45,6 +46,25 @@ document.addEventListener("turbolinks:load", function() {
         iconImageInput.click();
       });
     });
+    
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // 要素を取得
+      const button = document.getElementById('follow-btn');
+    
+      // マウスオーバー時のイベントハンドラ
+      button.addEventListener('mouseover', (event) => {
+        // マウスオーバー時に行いたい処理
+        console.log('unfollow');
+      });
+    
+      // マウスアウト時のイベントハンドラ
+      button.addEventListener('mouseout', (event) => {
+        // マウスアウト時に行いたい処理
+        console.log('following');
+      });
+    });
+
+    
 
 Rails.start()
 Turbolinks.start()

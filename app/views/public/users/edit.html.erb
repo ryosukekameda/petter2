@@ -13,22 +13,23 @@
         
         <div class="card-body-edit">
           <div class="image-form">
-            <div class="edit-header_image text-center" style="position: relative;">
+            <!--ヘッダー-->
+            <div class="edit-header_image text-center" style="position: relative;" title="Add photo">
               <%= label_tag :header_image do %>
-                <%= image_tag @user.get_header_image(850, 290), id: "header-image" %>
+                <%= image_tag @user.get_header_image(850, 290), class:"img-fluid", id: "header-image-preview" %>
               <% end %>
               <%= f.file_field :header_image, placeholder: "ヘッダー画像", class: "d-none", id: "user_header_image" %>
             </div>
+
+            <!--アイコン-->
             <div class="icon-leader d-flex justify-content-between align-items-center">
-              <div class="edit-icon-image">
+              <div class="edit-icon-image" title="Add photo" >
                 <%= label_tag :icon_image do %>
-                  <%= image_tag @user.get_icon_image(120, 120), class: 'rounded-circle', id: "icon-image" %>
+                  <%= image_tag @user.get_icon_image(120, 120), class: 'rounded-circle', id: "icon-image-preview" %>
                 <% end %>
               <%= f.file_field :icon_image, placeholder: "アイコン画像", class: "d-none", id: "user_icon_image" %>
               </div>
-              <div class="add-photo-icon" title="Add photo">
-                <i class="fa-solid fa-camera"></i>
-              </div>
+
               <!-- 退会するボタン -->
               <div class="dropdown">
                 <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

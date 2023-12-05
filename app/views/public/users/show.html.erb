@@ -1,6 +1,6 @@
 <div class="col-6 posts-container">
   
-  <!--ユーザー詳細-->
+  <!--ユーザー詳細カード-->
   <div class="card">
     <div class="card-header">
       <div class="back-button-container" style="display: flex; align-items: center;">
@@ -21,16 +21,12 @@
         <% if @user.header_image.attached? %>
           <%= image_tag @user.get_header_image(780, 220), style: 'width: 100%; height: auto;' %>
         <% else %>
-          <%= image_tag '1980x1080_image3.jpg' %>
+          <%= image_tag '1980x1080_image3.jpg', style: 'width: 100%; height: auto;' %>
         <% end %>
         <div class="user-icon">
-          <%= image_tag @user.get_icon_image(100, 100), class: 'rounded-circle' %>
+          <%= image_tag @user.get_icon_image(100, 100), class:'rounded-circle' %>
         </div>
-          <% unless user_signed_in? && @user == current_user %>
-            <div class="follow-btn-container">
-              <%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %>
-            </div>
-          <% end %>
+          
       </div>
     </div>
     
@@ -41,19 +37,21 @@
     </div>
     
     <div>
-      <!--<%# if user_signed_in? %>-->
-        <!--<p>User ID is: <%#= @post.user.id %></p>-->
-      <%# end %>
       <div style="margin: 10px;"><%= @user.introduction %></div>
       <div style="color: #aaa; margin: 10px;"><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
       <div>
         <%= link_to follows_user_path do %>
-          <span style="margin: 10px;"><%= @user.followers.count %> Following</span>
+          <span class="following-user" style="margin: 10px;"><%= @user.followers.count %> Following</span>
         <% end %>
         <%= link_to followers_user_path do %>
-          <span style="margin: 10px;"><%= @user.followeds.count %> Followers</span>
+          <span class="followers-user" style="margin: 10px;"><%= @user.followeds.count %> Followers</span>
         <% end %>
       </div>
+      <% unless user_signed_in? && @user == current_user %>
+        <p class="follow-btn-container">
+          <%= render partial: "/public/relationships/follow_btn", locals: { user: @user } %>
+        </p>
+      <% end %>
     </div>
 
     <% if user_signed_in? && @user == current_user %>
@@ -67,15 +65,15 @@
     <% @posts.each do |post| %>
       <div class="card">
         <div class="card-header">
-        <%= image_tag @user.get_icon_image(50, 50) %>
+        <%= image_tag @user.get_icon_image(50, 50), class:"rounded-circle" %>
         </div>
         <div class="card-body">
           <%= link_to post_path(post.id) do %>
           <div class="user-post-body">
             <%= post.body %>
           </div>
-          <div class="row justify-content-center">
-            <%= image_tag post.get_post_image(530, 322) %>
+          <div class="row justify-content-center user-post-show">
+            <%= image_tag post.get_post_image(630, 422), class:"img-fluid" %>
           </div>
           <% end %>
         </div>

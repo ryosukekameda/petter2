@@ -12,7 +12,7 @@
           <% end %>
         </p>
         <p class="card-text-list">
-          <%= link_to user_path(@user.id) do %>
+          <%= link_to user_path(current_user.id) do %>
             <i class="fa-solid fa-user"></i> User
           <% end %>
         </p>
@@ -45,17 +45,17 @@
     
     <div class="card" style="max-width: 200rem;">
       <div class="card-body">
-        <p class="card-text">
+        <p class="card-text-list">
           <%= link_to new_user_registration_path do %>
-            <i class="fa-solid fa-address-card"></i>Sign in
+            <i class="fa-solid fa-address-card"></i>Sign up
           <% end %>
         </p>
-        <p class="card-text">
+        <p class="card-text-list">
           <%= link_to new_user_session_path do %>
             <i class="fa-solid fa-right-to-bracket"></i>Log in
           <% end %>
         </p>
-        <p class="card-text">
+        <p class="card-text-list">
           <%= link_to about_path do %>
           <i class="fa-solid fa-paperclip"></i>About
           <% end %>

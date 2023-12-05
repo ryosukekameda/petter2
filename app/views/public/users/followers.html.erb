@@ -2,7 +2,7 @@
   <div class="card">
     <% @users.each do |user| %>
       <div class="card-body">
-        <%= link_to user_path(user) %>
+        <%= link_to user_path(user) do %>
           <%= image_tag user.get_icon_image(50, 50) %>
         <% end %>
         <%= user.name %>

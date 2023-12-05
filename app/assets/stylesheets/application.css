@@ -9,6 +9,22 @@
   box-sizing: border-box;
 }
 
+/* カード自体のスタイル */
+.card {
+  height: auto;
+  margin-bottom: 20px; /* カード間の余白 */
+  overflow: hidden; /* 画像がカードの外にはみ出さないように */
+}
+
+.actions {
+  width: 100px;
+}
+
+.field-login {
+  margin: 20px 0 20px 0;
+  width: 90%;
+}
+
 .posts-container {
     max-height: 1200px;
     overflow-y: auto;
@@ -60,18 +76,42 @@
   z-index: 3;
 }
 
+.user-icon img {
+  width: 100px; /* アイコンの幅 */
+  height: 100px; /* アイコンの高さ */
+  border-radius: 50%; /* 円形にする */
+  object-fit: cover; /* コンテナに合わせて画像をカバー */
+}
+
 .user-icon:hover {
   /* 光る効果を取り除くスタイル */
   box-shadow: none;
   transform: none;
 }
 
+/* 投稿された画像のスタイル */
+.user-post-show img {
+  width: 100%; /* カードの幅いっぱいになるように */
+  height: auto; /* 画像の高さが自動的に調整されるように */
+  display: block; /* 余白をなくすため */
+}
+
+.top-post-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 .follow-btn-container {
   position: absolute;
-  bottom: -25px;
+  bottom: -10px;
   right: 10px;
   z-index: 3;
+}
+
+.following-user, 
+.followers-user {
+  color: black;
 }
 
 .card-text-list a {
@@ -182,6 +222,7 @@
 
 /* Add photoアイコンのスタイル */
 .add-photo-icon {
+  color: white;
   position: absolute;
   top: -50%;
   left: 15%;
@@ -212,4 +253,31 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+
+/* 画像プレビューのスタイル */
+#image-preview-wrapper {
+  width: 100%; /* コンテナの幅を100%に設定 */
+  text-align: center; /* 中央揃え */
+}
+
+#image-preview {
+  max-width: 100%; /* 画像の最大幅をコンテナの100%に設定 */
+  height: auto; /* 画像の高さを自動調整 */
+  display: block; /* ブロック要素として表示 */
+  margin: 10px 0 10px 0;
+}
+
+/* アイコン画像のスタイルを調整 */
+#icon-image-preview {
+  width: 120px; /* ここでアイコンの幅を設定 */
+  height: 120px; /* ここでアイコンの高さを設定 */
+  border-radius: 50%; /* 丸い形にする */
+  object-fit: cover; /* コンテナに合わせて画像をカバー */
+  object-position: center; /* 画像の中心をコンテナの中心に合わせる */
+}
+
+.img-fluid {
+  width: 95%;
+  height: auto;
 }

@@ -3,12 +3,12 @@
   
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   
-    <div class="field-login">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"ユーザー名" %>
+    <div>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"ユーザー名", class:"field-login" %>
     </div>
   
-    <div class="field-login">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
+    <div>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード", class:"field-login" %>
     </div>
   
     <div class="actions">
@@ -16,6 +16,8 @@
     </div>
   <% end %>
   
-  <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary mr-3" %>
-
+  <div>
+    <%= link_to "guest log in", users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary mr-3" %>
+  </div>
+  
 </div>

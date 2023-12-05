@@ -11,12 +11,13 @@
           <%= f.text_area :body, style:"width: 90%; padding: 10px; border: none; outline: none;", placeholder:"何が起こっている？！"%>
         </div>
         <div class="card-text">
-          <label for="post_image" class="custom-file-upload;">
+          <label for="post_image" class="custom-file-upload">
             <i class="fa-regular fa-image" style="font-size: 30px;"></i>
           </label>
-          <%= f.file_field :post_image, accept: "image/*", style: "display: none;", id: "post_image", class:"image-preview-input"%>
-          Media
-            <div id="image-preview-wrapper" style="overflow: hidden;">
+          <div class="media-button" title="Media">
+            <%= f.file_field :post_image, accept: "image/*", style: "display: none;", id: "post_image", class:"image-preview-input" %>
+          </div>
+            <div id="image-preview-wrapper" class="img-fluid" style="overflow: hidden;">
               <img id="image-preview" style="max-height: 100vh;" />
             </div>
             <div class="d-flex justify-content-end" style="flex-grow: 1;">

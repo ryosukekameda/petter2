@@ -6,41 +6,35 @@
   
     <%= render "public/shared/error_messages", resource: resource %>
     
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
+    <div>
+      <%= f.text_field :name, class:"field-signup" %>
     </div>
     
-    <div class="field">
-      <%= f.label :nickname %><br />
-      <%= f.text_field :nickname %>
+    <div>
+      <%= f.text_field :nickname, class:"field-signup" %>
     </div>
   
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field-signup" %>
     </div>
     
-    <div class="field">
-      <%= f.label :phone_number %><br>
-      <%= f.text_field :phone_number %>
+    <div>
+      <%= f.text_field :phone_number, class:"field-signup" %>
     </div>
   
-    <div class="field">
-      <%= f.label :password %>
+    <div>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"field-signup" %>
     </div>
   
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"field-signup" %>
     </div>
   
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+    <div>
+      <%= f.submit "Sign up", class:"actions" %>
     </div>
   <% end %>
   

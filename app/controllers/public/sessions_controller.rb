@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :ensure_normal_user, only: [:destroy]
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_user, only: [:create]
+  
+  def guest_sign_in
+    guest_user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+      user.nickname = "げすと"
+      user.phone_number = "00000000000"
+      user.is_deleted = false
+    end
+    sign_in guest_user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 
   # GET /resource/sign_in
   # def new
@@ -27,6 +40,13 @@ class Public::SessionsController < Devise::SessionsController
   # end
   
   protected
+  
+  def ensure_normal_user
+    if resource && resource.email == 'guest@example.com'
+      flash.now[:notice] = "ゲストユーザーの削除はできません。"
+      redirect_to root_path
+    end
+  end
   
   def reject_user
     @user = User.find_by(email: params[:user][:email])

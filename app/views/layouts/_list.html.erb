@@ -31,15 +31,22 @@
             <i class="fa-solid fa-right-from-bracket"></i> Log out
           <% end %>
         </p>
+        
       </div>
     </div>
 
     <%# Postモーダルボタン %>
       <div class="list-post-button text-center">
-        <%= link_to 'Post',new_post_path, class: "btn btn-primary rounded-pill", remote: true, style:"width: 200px; height: 50px;" %>
+        <%= link_to 'Post',new_post_path, class: "btn btn-primary rounded-pill", remote: true, style:"width: 200px; height: 50px; font-size: 25px;" %>
       </div>
       <div id="mask" class="hidden"></div>
       <div id="modal" class="hidden"></div>
+      
+      <div class="admin-login text-center">
+        <% if current_user.try(:admin?) %>
+          <%= link_to 'admin login', rails_admin_path, class: "btn btn-secondary rounded-pill", style:"width: 200px; height: 50px; font-size: 25px;" %>
+        <% end %>
+      </div>
     
     <% else %>
     

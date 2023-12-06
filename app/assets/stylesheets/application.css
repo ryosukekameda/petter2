@@ -3,6 +3,9 @@
  *= require_self
  */
  
+ @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
+ 
 * {
   margin: 0;
   padding: 0;
@@ -16,14 +19,25 @@
   overflow: hidden; /* 画像がカードの外にはみ出さないように */
 }
 
+.logo-font {
+   font-family: 'Cherry Swash', cursive;
+}
+
 .actions {
   width: 100px;
+  margin-bottom: 20px;
 }
 
 .field-login {
-  margin: 20px 0 20px 0;
-  width: 90%;
-  height: 50px;
+  margin: 20px 0;
+  width: 50%;
+  height: 40px;
+}
+
+.field-signup {
+  margin: 20px 0;
+  width: 50%;
+  height: 40px;
 }
 
 .posts-container {
@@ -60,6 +74,10 @@
 }
 
 .list-post-button {
+  margin: 20px 0 0 0;
+}
+
+.admin-login {
   margin: 20px 0 0 0;
 }
 

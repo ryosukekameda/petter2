@@ -1,4 +1,4 @@
-<div class="col-6 posts-container">
+<div class="col-6 posts-container text-center">
 
   <h2>Sign up</h2>
   
@@ -7,37 +7,40 @@
     <%= render "public/shared/error_messages", resource: resource %>
     
     <div>
-      <%= f.text_field :name, class:"field-signup" %>
+      <%= f.text_field :name, autocomplete: "name", placeholder:"ユーザー名", class:"field-signup" %>
     </div>
     
     <div>
-      <%= f.text_field :nickname, class:"field-signup" %>
+      <%= f.text_field :nickname, autocomplete: "nickname", placeholder:"ニックネーム", class:"field-signup" %>
     </div>
   
     <div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field-signup" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス", class:"field-signup" %>
     </div>
     
     <div>
-      <%= f.text_field :phone_number, class:"field-signup" %>
+      <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder:"電話番号", class:"field-signup" %>
     </div>
   
     <div>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード (#{ @minimum_password_length }文字以上)", class:"field-signup" %>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class:"field-signup" %>
     </div>
   
     <div>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"field-signup" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード（確認）", class:"field-signup" %>
     </div>
   
     <div>
-      <%= f.submit "Sign up", class:"actions" %>
+      <%= f.submit "Sign up", class:"actions-signup btn btn-outline-success rounded-pill" %>
     </div>
   <% end %>
   
-  <%= render "public/shared/links" %>
+  <div class="user-login">
+    アカウントをお持ちの方は
+    <%= link_to "こちら", new_user_session_path %>
+    から
+  </div>
 
 </div>

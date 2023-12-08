@@ -35,8 +35,13 @@
             <p style="color: #aaa;"><%= @post.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
         </div>
         <div class="card-footer">
-          <%= @post.comments.count %>
-          <%= render "public/favorites/btn", post: @post %>
+          <span class="comment-count">
+            <i class="fa-regular fa-comment"></i>
+            <%= @post.comments.count %>
+          </span>
+          <span class="favorite-count">
+            <%= render "public/favorites/btn", post: @post %>
+          </span>
         </div>
       </div>
       <table  class="table">
@@ -54,7 +59,7 @@
             <%= f.text_area :comment, style:"width: 90%; padding: 10px; border: none; outline: none;", rows: '2', placeholder: "コメントを投稿する" %>
           </div>
           <div style="text-align: right;">
-            <%= f.submit "送信", class:"btn btn-outline-primary rounded-pill", style: "width: 100px; margin-top: 10px;" %>
+            <%= f.submit "send", class:"btn btn-outline-primary rounded-pill", style: "width: 100px; margin-top: 10px;" %>
           </div>        
           <% end %>
         </div>
@@ -73,7 +78,7 @@
       <div class="card-footer d-flex justify-content-between align-items-center">
         <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
         <% if comment.user == current_user %>
-          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class:"btn btn-outline-danger rounded-pill" %>
+          <%= link_to "delete", post_comment_path(comment.post, comment), method: :delete, class:"btn btn-outline-danger rounded-pill" %>
         <% end %>
       </div>
     </div>

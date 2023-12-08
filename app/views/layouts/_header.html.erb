@@ -40,8 +40,10 @@
                       
         <% else %>
          
-          <div>
-            <%= link_to "guest log in", users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary rounded-pill mr-3", style:"width: 200px;" %>
+          <div title="Guest Log In">
+            <%= link_to users_guest_sign_in_path, method: :post, class:"btn btn-outline-secondary rounded-pill mr-3", style:"width: 100px;" do %>
+              <i class="fa-solid fa-person"></i>
+            <% end %>
           </div>
             
         <% end %>

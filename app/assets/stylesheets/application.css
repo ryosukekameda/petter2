@@ -19,24 +19,45 @@
   overflow: hidden; /* 画像がカードの外にはみ出さないように */
 }
 
+.card-search {
+  margin-top: 20px;
+}
+
+.flash {
+  margin-right: 30px;
+}
+
+.favorite-count {
+  margin-left: 20px;
+}
+
 .logo-font {
    font-family: 'Cherry Swash', cursive;
 }
 
 .actions {
   width: 100px;
-  margin-bottom: 20px;
+  margin: 20px 0;
+}
+
+.actions-signup {
+  width: 200px;
+  margin: 40px 0;
+}
+
+.user-login {
+  margin-top: 50px;
 }
 
 .field-login {
   margin: 20px 0;
-  width: 50%;
+  width: 60%;
   height: 40px;
 }
 
 .field-signup {
   margin: 20px 0;
-  width: 50%;
+  width: 60%;
   height: 40px;
 }
 
@@ -74,7 +95,7 @@
 }
 
 .list-post-button {
-  margin: 20px 0 0 0;
+  margin: 40px 0 0 0;
 }
 
 .admin-login {

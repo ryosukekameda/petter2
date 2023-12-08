@@ -36,8 +36,10 @@
     </div>
 
     <%# Postモーダルボタン %>
-      <div class="list-post-button text-center">
-        <%= link_to 'Post',new_post_path, class: "btn btn-primary rounded-pill", remote: true, style:"width: 200px; height: 50px; font-size: 25px;" %>
+      <div class="list-post-button text-center" title="Post">
+        <%= link_to new_post_path, class: "btn btn-outline-primary rounded-pill", remote: true, style:"width: 200px; height: 50px; font-size: 25px;" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
       </div>
       <div id="mask" class="hidden"></div>
       <div id="modal" class="hidden"></div>

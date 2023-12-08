@@ -21,7 +21,7 @@
               <img id="image-preview" style="max-height: 100vh;" />
             </div>
             <div class="d-flex justify-content-end" style="flex-grow: 1;">
-              <%= f.submit 'Post', class: "btn btn-primary rounded-pill", style: "width: 100px;" %>
+              <%= f.submit 'Post', class: "btn btn-outline-primary rounded-pill", style: "width: 100px;" %>
             </div>
         </div>
       </div>
@@ -53,16 +53,13 @@
             </div>
           </div>
         <div class="card-footer">
-          <table>
-            <tr>
-              <td>
-                <i class="fa-regular fa-comment"></i>
-                <%= "#{post.comments.count}" %>
-              </td>
-              <td><%= render "public/favorites/btn", post: post %></td>
-              <td></td>
-            </tr>
-          </table>
+          <span class="comment-count">
+            <i class="fa-regular fa-comment"></i>
+            <%= "#{post.comments.count}" %>
+          </span>
+          <span class="favorite-count">
+            <%= render "public/favorites/btn", post: post %>
+          </span>
           </div>
         </div>
 

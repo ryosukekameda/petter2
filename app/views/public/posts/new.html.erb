@@ -1,4 +1,5 @@
 <!--新規投稿-->
+  <div class="col-6 posts-container">
     <%= form_with model: @post, url: posts_path, method: :post, local:true do |f| %>
       <div class="card-new">
         <div class="card-text d-flex align-items-center">
@@ -15,8 +16,9 @@
           Media
             <img id="image-preview" style="max-width: 200px; display: none;" />
             <div class="d-flex justify-content-end" style="flex-grow: 1;">
-              <%= f.submit 'Post', class: "btn btn-primary rounded-pill", style: "width: 100px;" %>
+              <%= f.submit 'Post', class: "btn btn-outline-primary rounded-pill", style: "width: 100px;" %>
             </div>
         </div>
       </div>
     <% end %>
+  </div>

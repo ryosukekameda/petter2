@@ -2,24 +2,22 @@
   <div class="card">
     <% @users.each do |user| %>
         <div class="card-header-follow">
-          <div>
-            <%= link_to user_path(user) do %>
-              <%= image_tag user.get_icon_image(50, 50) %>
-            <% end %>
-            <%= user.nickname %>
-          </div>
-          <div>
-              <% unless user_signed_in? && current_user == user %>
-                <div class="follow-btn-container2">
-                  <!-- user変数を部分テンプレートに渡す -->
-                  <div class="follow-btn">
-                    <%= render partial: "/public/relationships/follow_btn", locals: { user: user } %>
-                  </div>
-                </div>
-              <% end %>
-          </div>
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_icon_image(50, 50) %>
+          <% end %>
+          <%= user.name %>
         </div>
         <div class="card-body">
+          <div>
+            <% unless user_signed_in? && current_user == user %>
+              <div class="follow-btn-container2">
+                <!-- user変数を部分テンプレートに渡す -->
+                <div class="follow-btn">
+                  <%= render partial: "/public/relationships/follow_btn", locals: { user: user } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
           <%= user.introduction %>
         </div>
     <% end %> 

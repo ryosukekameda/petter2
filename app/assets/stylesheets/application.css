@@ -21,19 +21,17 @@ html, body {
 .background::before {
   content: "";
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-image: url("/assets/background_petter.jpg");
-  background-size: auto;
-  background-repeat: repeat; /* 背景画像を繰り返し表示 */
+  background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh; /* ビューポートの全高さを背景の最小高さとする */
   opacity: 0.3; /* ここで背景画像の透明度を設定 */
   z-index: -2; /* 背景を他の要素より下に配置 */
-  height: 900px;
-  
 }
 
 .container, .container > .row {
@@ -52,16 +50,11 @@ footer {
   z-index: 10;
 }
 
-.posts-container {
-    max-height: 860px;
-    margin-top: 20px;
-    overflow-y: auto;
-}
-
+.posts-container,
 .posts-container-new {
-    max-height: 1200px;
+    max-height: 830px;
+    margin-top: 10px;
     overflow-y: auto;
-    margin-top: 100px;
 }
 
 /* カード自体のスタイル */

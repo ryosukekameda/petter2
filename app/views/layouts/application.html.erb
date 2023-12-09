@@ -37,10 +37,10 @@
           </div>
         </div>
         
-        <!--ページネーション-->
+        <div id="footer">
+          <%= render "layouts/footer" %>
+        </div>
         
-        <%= render "layouts/footer" %>
-    
       </body>
       
     <% else %>
@@ -52,26 +52,24 @@
         </div>
         
         <div class="background">
-        <div class="container">
-          <div class="row justify-content-center">
-          <!--リスト-->
-          <div class="col-3">
-            <%= render 'layouts/list' %>
-          </div>
-          <%= yield %>
-          <!--検索フォーム-->
-          <div class="col-3">
-            <%= render 'layouts/search' %>
-          </div>
+          <div class="container">
+            <div class="row justify-content-center">
+            <!--リスト-->
+            <div class="col-3">
+              <%= render 'layouts/list' %>
+            </div>
+            <%= yield %>
+            <!--検索フォーム-->
+            <div class="col-3">
+              <%= render 'layouts/search' %>
+            </div>
+            </div>
           </div>
         </div>
+        
+        <div id="footer">
+          <%= render "layouts/footer" %>
         </div>
-        
-        <!--ページネーション-->
-        
-        <%= render "layouts/footer" %>
-        
-        
         
       </body>
       

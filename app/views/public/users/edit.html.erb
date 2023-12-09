@@ -36,7 +36,7 @@
                   <i class="fa-solid fa-ellipsis"></i>
                 </button>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <%= link_to "withdraw", unsubscribe_user_path, method: :delete, class:"dropdown-item text-danger" %>
+                    <%= link_to "退会", unsubscribe_user_path(@user.id), class:"dropdown-item text-danger" %>
                   </div>
               </div>
             </div>

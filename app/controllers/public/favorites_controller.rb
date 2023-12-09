@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   def index
+    @favorite_posts = Post.joins(:favorites).where(favorites: { user_id: current_user.id }).order('favorites.created_at DESC')
   end
   
   def create

@@ -1,4 +1,9 @@
 <div class="col-6 posts-container">
+  <div class="back-button-container" style="display: flex; align-items: center;">
+    <%= link_to '←', :back, class: "back-button" %>
+    <h2>Following</h2>
+  </div>
+  
   <div class="card">
     <% @users.each do |user| %>
         <div class="card-header-follow">

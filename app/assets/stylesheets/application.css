@@ -12,6 +12,58 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%; /* HTMLとBODYに100%の高さを設定 */
+  margin: 0;
+  padding: 0;
+}
+
+.background::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/background_petter.jpg");
+  background-size: auto;
+  background-repeat: repeat; /* 背景画像を繰り返し表示 */
+  min-height: 100vh; /* ビューポートの全高さを背景の最小高さとする */
+  opacity: 0.3; /* ここで背景画像の透明度を設定 */
+  z-index: -2; /* 背景を他の要素より下に配置 */
+  height: 900px;
+  
+}
+
+.container, .container > .row {
+  position: relative;
+  z-index: 2; /* 背景より前に配置 */
+}
+
+footer {
+  position: fixed; /* フッターを画面の下に固定 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  line-height: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.posts-container {
+    max-height: 860px;
+    margin-top: 20px;
+    overflow-y: auto;
+}
+
+.posts-container-new {
+    max-height: 1200px;
+    overflow-y: auto;
+    margin-top: 100px;
+}
+
 /* カード自体のスタイル */
 .card {
   height: auto;
@@ -20,11 +72,14 @@
 }
 
 .card-search {
+  position: relative; /* 位置を相対位置に設定 */
+  z-index: 2; /* 背景よりも前面に表示するために高いz-indexを設定 */
   margin-top: 20px;
 }
 
+
 .flash {
-  margin-right: 30px;
+  margin-right: 50px;
 }
 
 .favorite-count {
@@ -59,11 +114,6 @@
   margin: 20px 0;
   width: 60%;
   height: 40px;
-}
-
-.posts-container {
-    max-height: 1200px;
-    overflow-y: auto;
 }
 
 .header-image {
@@ -324,4 +374,8 @@
   width: 95%;
   height: auto;
   object-fit: cover; /* 画像をプレビューエリアにピッタリ表示し、縦横比を維持する */
+}
+
+.menu-list {
+  margin-top: 20px;
 }

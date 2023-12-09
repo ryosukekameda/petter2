@@ -21,7 +21,7 @@
         <% if @user.header_image.attached? %>
           <%= image_tag @user.get_header_image(780, 220), style: 'width: 100%; height: auto;' %>
         <% else %>
-          <%= image_tag '1980x1080_image3.jpg', style: 'width: 100%; height: auto;' %>
+          <%= image_tag 'background_edit.jpg', style: 'width: 100%; height: auto;' %>
         <% end %>
         <div class="user-icon">
           <%= image_tag @user.get_icon_image(100, 100), class:'rounded-circle' %>

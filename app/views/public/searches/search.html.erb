@@ -1,4 +1,8 @@
-<h2>Results index</h2>
+<div class="col-6 posts-container">
+  <div class="back-button-container" style="display: flex; align-items: center;">
+    <%= link_to '←', :back, class: "back-button" %>
+    <h2>Results index</h2>
+  </div>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
@@ -23,3 +27,5 @@
     </tbody>
   <% end %>
 </table>
+
+</div>

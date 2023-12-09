@@ -21,17 +21,19 @@
           <%= render "layouts/header" %>
         </div>
         
-        <div class="container">
-          <div class="row justify-content-center">
-          <!--リスト-->
-          <div class="col-3">
-            <%= render 'layouts/list' %>
-          </div>
+        <div class="background">
+          <div class="container">
+            <div class="row justify-content-center">
+            <!--リスト-->
+              <div class="col-3">
+                <%= render 'layouts/list' %>
+              </div>
           <%= yield %>
-          <!--検索フォーム-->
-          <div class="col-3">
-            <%= render 'layouts/search' %>
-          </div>
+            <!--検索フォーム-->
+              <div class="col-3">
+                <%= render 'layouts/search' %>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -49,6 +51,7 @@
           <%= render "layouts/header" %>
         </div>
         
+        <div class="background">
         <div class="container">
           <div class="row justify-content-center">
           <!--リスト-->
@@ -61,6 +64,7 @@
             <%= render 'layouts/search' %>
           </div>
           </div>
+        </div>
         </div>
         
         <!--ページネーション-->

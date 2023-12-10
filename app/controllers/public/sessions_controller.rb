@@ -5,6 +5,10 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_user, only: [:create]
   
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+  
   def guest_sign_in
     guest_user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

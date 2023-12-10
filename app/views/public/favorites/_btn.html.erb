@@ -4,8 +4,8 @@
     <%= post.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to post_favorites_path(post), method: :post do %>
-    <i class="fa-regular fa-heart" area-hidden="true" style="color: black;"></i>
+  <%= link_to post_favorites_path(post), method: :post, style: "color: black;" do %>
+    <i class="fa-regular fa-heart" area-hidden="true"></i>
     <%= post.favorites.count %>
   <% end %>
 <% end %>

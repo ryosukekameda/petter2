@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
     @user = current_user
-    @posts = Post.page(params[:post]).per(10)
+    @posts = Post.page(params[:post]).per(100)
     @tag_list = Tag.all
   end
   

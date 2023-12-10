@@ -8,11 +8,8 @@
     <% @users.each do |user| %>
         <div class="card-header-follow">
           <%= link_to user_path(user) do %>
-            <%= image_tag user.get_icon_image(50, 50) %>
+            <%= image_tag user.get_icon_image(50, 50), class:'rounded-circle' %>
           <% end %>
-          <%= user.name %>
-        </div>
-        <div class="card-body">
           <div>
             <% unless user_signed_in? && current_user == user %>
               <div class="follow-btn-container2">
@@ -23,8 +20,16 @@
               </div>
             <% end %>
           </div>
-          <%= user.introduction %>
+        </div>
+        <div class="card-body">
+          <div>
+            <%= user.name %>
+          </div>
+          <div>
+            <%= user.introduction %>
+          </div>
         </div>
     <% end %> 
   </div>
+  
 </div>

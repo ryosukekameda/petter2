@@ -2,14 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search
   
-  def after_sign_in_path_for(resource)
-    if resource == :admin
-      # 管理者側の遷移先
-    elsif resource == :user
-      # 顧客側の遷移先
-    end
-  end
-  
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
       new_admin_session_path
@@ -27,17 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  
-  # def after_sign_in_path_for(resource)
-    # case resource
-    # when Admin
-      # admin_path
-    # when User
-      # root_path
-    # else
-      # super # Deviseのデフォルトの挙動を呼び出す
-    # end
-  # end
   
   def guest_sign_in
     user = User.guest

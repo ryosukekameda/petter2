@@ -1,8 +1,13 @@
-<div class="col-6 posts-container">
+<div class="col-6 posts-container withdraw">
 
-<h1>本当に退会しますか？</h1>
-
-  <%= link_to "退会しない", user_path(@user.id), :class => "btn btn-primary ms-3" %>
-  <%= link_to "退会する", withdraw_user_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" } %>
-
+<h1 class="text-center">本当に退会しますか？</h1>
+  <div class="withdraw-button text-center">
+    <span class="withdraw-span">
+      <%= link_to "退会しない", user_path(@user.id), :class => "btn btn-primary ms-3" %>
+    </span>
+    <span>
+      <%= link_to "退会する", withdraw_user_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" } %>
+    </span>
+  </div>
+  
 </div>

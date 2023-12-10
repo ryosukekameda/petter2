@@ -77,6 +77,7 @@ footer {
 
 .favorite-count {
   margin-left: 20px;
+  color: black;
 }
 
 .logo-font {
@@ -107,6 +108,18 @@ footer {
   margin: 20px 0;
   width: 60%;
   height: 40px;
+}
+
+.withdraw {
+  margin-top: 100px;
+}
+
+.withdraw-button {
+  margin-top: 70px;
+}
+
+.withdraw-span {
+  margin-right: 70px;
 }
 
 .header-image {

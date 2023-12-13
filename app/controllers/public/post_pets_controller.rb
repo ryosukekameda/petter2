@@ -1,2 +1,2 @@
-class Public::PostPetController < ApplicationController
+class Public::PostPetsController < ApplicationController
 end

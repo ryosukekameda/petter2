@@ -26,7 +26,7 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/assets/background_petter.jpg");
+  background-image: image-url("/assets/background_petter.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh; /* ビューポートの全高さを背景の最小高さとする */

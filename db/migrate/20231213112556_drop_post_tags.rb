@@ -2,8 +2,8 @@ class DropPostTags < ActiveRecord::Migration[6.1]
   def change
     drop_table :post_tags do |t|
       
-      t.references :post, foreign_key: true
-      t.references :tag, foreign_key: true
+      t.bigint :post_id
+      t.bigint :tag_id
       t.timestamps
     end
   end

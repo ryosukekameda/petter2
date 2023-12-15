@@ -4,28 +4,40 @@
     <h2>Results index</h2>
   </div>
 
-<table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
-    <tbody>
       <% @users.each do |user| %>
-        <tr>
-          <td><%= image_tag user.get_icon_image(50, 50), class:'rounded-circle' %></td>
-          <td><%= user.name %></td>
-        </tr>
+        <div class="card">
+          <div class="card-header">
+            <%= link_to user_path(user.id) do %>
+              <span><%= image_tag user.get_icon_image(50, 50), class:'rounded-circle' %></span>
+              <span style="color: black;"><%= user.name %></span>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <span><%= user.introduction %></span>
+          </div>
+        </div>
+       
       <% end %>
-    </tbody>
+
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
       <% @posts.each do |post| %>
-        <tr>
-          <td><%= image_tag post.get_post_image(100, 100) %></td>
-          <td><%= post.body %></td>
-        </tr>
+        <div class="card">
+          <div class="card-header">
+            <%= link_to user_path(post.user.id) do %>
+              <span><%= image_tag post.user.get_icon_image(50, 50), class:'rounded-circle' %></span>
+              <span style="color: black;"><%= post.user.name %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-body">
+          <span><%= image_tag post.get_post_image(380, 120) %></span>
+          <span><%= post.body %></span>
+        </div>
       <% end %>
-    </tbody>
   <% end %>
-</table>
+
 
 </div>

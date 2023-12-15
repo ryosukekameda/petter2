@@ -43,10 +43,13 @@
       </div>
       <div id="mask" class="hidden"></div>
       <div id="modal" class="hidden"></div>
-      
+    
+    <!--管理者ログイン-->
       <div class="admin-login text-center">
         <% if current_user.try(:admin?) %>
-          <%= link_to 'admin login', rails_admin_path, class: "btn btn-secondary rounded-pill", style:"width: 200px; height: 50px; font-size: 25px;" %>
+          <%= link_to rails_admin_path, class: "btn btn-outline-secondary rounded-pill", style:"width: 200px; height: 50px; font-size: 25px;" do %>
+            <i class="fa-solid fa-user-tie"></i>
+          <% end %>
         <% end %>
       </div>
     

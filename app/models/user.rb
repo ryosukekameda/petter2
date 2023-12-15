@@ -29,19 +29,25 @@ class User < ApplicationRecord
   end
   
   # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?","#{word}")
-    elsif search == "forward_match"
-      @user = User.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @user = User.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @user = User.where("name LIKE?","%#{word}%")
+  def self.looks(search_method, word)
+    if word.present?
+      case search_method
+      when 'Perfect_match'
+        User.where("name LIKE ?", "#{word}")
+      when 'forward_match'
+        User.where("name LIKE ?", "#{word}%")
+      when 'backward_match'
+        User.where("name LIKE ?", "%#{word}")
+      when 'partial_match'
+        User.where("name LIKE ?", "%#{word}%")
+      else
+        User.all
+      end
     else
-      @user = User.all
+      User.all
     end
   end
+
 
   
   def get_header_image(width, height)

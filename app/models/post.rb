@@ -42,17 +42,22 @@ class Post < ApplicationRecord
 
   
   # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("body LIKE?","#{word}")
-    elsif search == "forward_match"
-      @post = Post.where("body LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @post = Post.where("body LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @post = Post.where("body LIKE?","%#{word}%")
+  def self.looks(search_method, word)
+    if word.present?
+      case search_method
+      when 'Perfect_match'
+        Post.where("body LIKE ?", "#{word}")
+      when 'forward_match'
+        Post.where("body LIKE ?", "#{word}%")
+      when 'backward_match'
+        Post.where("body LIKE ?", "%#{word}")
+      when 'partial_match'
+        Post.where("body LIKE ?", "%#{word}%")
+      else
+        Post.all
+      end
     else
-      @post = Post.all
+      Post.all
     end
   end
   

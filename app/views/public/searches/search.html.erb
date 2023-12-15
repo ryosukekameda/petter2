@@ -10,7 +10,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= image_tag user.get_icon_image(100, 100) %></td>
+          <td><%= image_tag user.get_icon_image(50, 50), class:'rounded-circle' %></td>
           <td><%= user.name %></td>
         </tr>
       <% end %>

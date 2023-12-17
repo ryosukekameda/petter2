@@ -50,7 +50,10 @@
               <p style="color: black; text-decoration: none;"><%= post.body %></p>
             </div>
             <div class="row justify-content-center user-post-show">
-                <%= image_tag post.image, class:"img-fluid" %>
+              <% if post.post_image.present? %>
+                <%= image_tag post.post_image, class:"img-fluid" %>
+
+              <% end %>
             <% end %>
             </div>
           </div>

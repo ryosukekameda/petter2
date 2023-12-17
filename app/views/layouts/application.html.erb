@@ -7,9 +7,9 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/83484975db.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application.js', 'data-turbolinks-track': 'reload' %>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
   </head>
 
    <% if user_signed_in? %>

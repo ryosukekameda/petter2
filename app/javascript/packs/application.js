@@ -76,23 +76,6 @@ document.addEventListener("turbolinks:load", function() {
           }
         });
       });
-    
-    document.addEventListener('DOMContentLoaded', (event) => {
-      // 要素を取得
-      const button = document.getElementById('follow-btn');
-    
-      // マウスオーバー時のイベントハンドラ
-      button.addEventListener('mouseover', (event) => {
-        // マウスオーバー時に行いたい処理
-        console.log('unfollow');
-      });
-    
-      // マウスアウト時のイベントハンドラ
-      button.addEventListener('mouseout', (event) => {
-        // マウスアウト時に行いたい処理
-        console.log('following');
-      });
-    });
 
     
 

@@ -68,8 +68,8 @@ class Post < ApplicationRecord
   
   def get_post_image(width, height)
     unless post_image.attached?
-      file_path = Rails.root.join('app/assets/images/1980x1080_image.png')
-      post_image.attach(io: File.open(file_path), filename: 'no_image.png', content_type: 'image/png')
+      file_path = Rails.root.join('app/assets/images/1980x1080_image.webp')
+      post_image.attach(io: File.open(file_path), filename: 'no_image.webp', content_type: 'image/webp')
     end
       post_image.variant(resize_to_limit: [width, height]).processed
   end
